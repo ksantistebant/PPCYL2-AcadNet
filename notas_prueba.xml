@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ingreso>
+    <curso codigo="770">Programacion Avanzada</curso>
+    <notas>
+        <actividad nombre="Tarea 1" carnet="1234">90</actividad>
+        <actividad nombre="Tarea 2" carnet="5678">60</actividad>
+        <actividad nombre="Tarea 3" carnet="1122">40</actividad>
+        <actividad nombre="Tarea 1" carnet="5678">100</actividad>
+        <actividad nombre="Tarea 2" carnet="1234">150</actividad>
+    </notas>
+</ingreso>

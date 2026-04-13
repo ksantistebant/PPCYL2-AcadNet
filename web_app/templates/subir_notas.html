@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subir Notas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .contenedor { border: 1px solid #ccc; padding: 20px; max-width: 400px; }
+        button { margin-top: 15px; padding: 10px; }
+        .alerta { color: blue; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Subir Notas (Tutor)</h2>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} <label for="archivo">Selecciona tu archivo XML:</label><br><br>
+            <input type="file" name="archivo" id="archivo" accept=".xml" required>
+            <br>
+            <button type="submit">Cargar a la Matriz</button>
+        </form>
+
+        {% if mensaje %}
+            <p class="alerta">{{ mensaje }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

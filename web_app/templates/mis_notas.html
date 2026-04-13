@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Notas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .contenedor { border: 1px solid #ccc; padding: 20px; max-width: 600px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .alerta { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>MIS NOTAS</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <label for="carnet">Ingresa tu Carnet:</label>
+            <input type="text" name="carnet" id="carnet" value="{{ carnet }}" required>
+            <button type="submit">Consultar</button>
+        </form>
+
+        {% if mensaje %}
+            <p class="alerta">{{ mensaje }}</p>
+        {% endif %}
+
+        {% if datos_notas %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in datos_notas %}
+                    <tr>
+                        <td>{{ item.actividad }}</td>
+                        <td>{{ item.nota }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>

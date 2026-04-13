@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administrador</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f7f6;}
+        .contenedor { border: 1px solid #ccc; padding: 30px; border-radius: 8px; max-width: 600px; background: white;}
+        .btn-salir { padding: 10px 15px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;}
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>Bienvenido, Administrador</h2>
+        <p>Has ingresado al sistema de control principal de AcadNet. Por favor escoge una de las siguientes oppciones:</p>
+        
+        <br><br>
+        <a href="{% url 'logout' %}" class="btn-salir">Cerrar Sesión</a>
+    </div>
+
+</body>
+</html>
