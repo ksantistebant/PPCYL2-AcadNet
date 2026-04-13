@@ -30,3 +30,30 @@ El sistema se divide en dos servicios principales:
 1. **Iniciar el Backend:**
    ```bash
    python3 app.py
+
+2. **Iniciar el Frontend (en otra terminal):**
+    Bash
+
+    python3 manage.py runserver 8000
+
+    Acceder en el navegador a: http://127.0.0.1:8000/
+
+### 📊 Historial de Versiones
+
+    **v1.0.0 (Versión Actual): - Implementación de arquitectura Cliente-Servidor. **
+
+        Conexión exitosa de módulos de carga de notas y reportes gráficos.
+
+        Sistema de Login básico por sesiones.
+
+    **Próximamente (v1.1.0):**
+
+        Implementación del panel completo de Administrador.
+
+        Persistencia de datos (opcional).
+
+        Refinamiento de la interfaz de usuario (CSS avanzado).
+
+### 👤 Autor
+
+    Kat - Desarrollo Integral - [Tu Perfil de GitHub]
