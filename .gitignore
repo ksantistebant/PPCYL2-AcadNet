@@ -1,2 +1,12 @@
+# Entornos virtuales
 venv/
-__pycache/
+env/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Archivos de la base de datos y registros dinámicos
+usuarios.json
+bitacora.log
+db.sqlite3

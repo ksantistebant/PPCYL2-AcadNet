@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal AcadNet - Catedrático</title>
+    <style>
+        :root {
+            --ink-black: #001219;
+            --dark-teal: #005F73;
+            --dark-cyan: #0A9396;
+            --pearl-aqua: #94D2BD;
+            --vanilla-custard: #E9D8A6;
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px;
+            background-color: var(--vanilla-custard);
+            color: var(--ink-black);
+            display: flex;
+            justify-content: center;
+        }
+        .dashboard-tutor {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,18,25,0.15);
+            width: 100%;
+            max-width: 650px;
+        }
+        .header-tutor {
+            border-bottom: 3px solid var(--dark-teal);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .header-tutor h2 {
+            color: var(--ink-black);
+            margin: 0;
+            font-size: 26px;
+        }
+        .header-tutor p {
+            color: var(--dark-teal);
+            margin: 5px 0 0 0;
+            font-weight: bold;
+        }
+        .grid-herramientas {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Divide la pantalla en dos columnas iguales */
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .tarjeta-accion {
+            background-color: var(--dark-teal);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tarjeta-accion.secundaria {
+            background-color: var(--dark-cyan);
+        }
+        /* Efecto de elevación al pasar el mouse */
+        .tarjeta-accion:hover {
+            background-color: var(--ink-black);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,18,25,0.2);
+        }
+        .icono {
+            font-size: 35px;
+            margin-bottom: 10px;
+            color: var(--pearl-aqua); /* Contraste brillante para los iconos */
+        }
+        .btn-logout {
+            display: block;
+            text-align: right;
+            color: var(--ink-black);
+            text-decoration: none;
+            font-weight: bold;
+            padding-top: 15px;
+        }
+        .btn-logout:hover { color: var(--dark-teal); }
+    </style>
+</head>
+<body>
+    <div class="dashboard-tutor">
+        
+        <div class="header-tutor">
+            <h2>Centro de Control</h2>
+            <p>Módulo de Gestión para Tutores</p>
+        </div>
+
+        <div class="grid-herramientas">
+            <a href="{% url 'subir_notas' %}" class="tarjeta-accion">
+                <div class="icono">📁</div>
+                Cargar Notas (XML)
+            </a>
+
+            <a href="{% url 'reporte_tutor' %}" class="tarjeta-accion secundaria">
+                <div class="icono">📊</div>
+                Reporte por Actividad
+            </a>
+        </div>
+
+        <a href="{% url 'logout' %}" class="btn-logout">Cerrar Sesión ➔</a>
+    </div>
+</body>
+</html>

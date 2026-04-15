@@ -12,6 +12,22 @@
         th { background-color: #d1ecf1; }
         .alerta { color: red; font-weight: bold; }
         .zona-grafica { margin-top: 30px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .btn-volver { 
+            display: inline-block; 
+            margin-top: 15px; 
+            padding: 10px 15px; 
+            background-color: var(--ink-black); 
+            color: var(--vanilla-custard); 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .btn-volver:hover {
+            background-color: var(--dark-cyan);
+            color: white;
+        }        
     </style>
 </head>
 <body>
@@ -81,6 +97,14 @@
                 });
             </script>
         {% endif %}
+            <br><br>
+            {% if request.session.rol == 'admin' %}
+                <a href="{% url 'panel_admin' %}" class="btn-volver">← Volver al Panel</a>
+            {% elif request.session.rol == 'tutor' %}
+                <a href="{% url 'panel_tutor' %}" class="btn-volver">← Volver al Panel</a>
+            {% else %}
+                <a href="{% url 'panel_estudiante' %}" class="btn-volver">← Volver al Panel</a>
+            {% endif %}        
     </div>
 </body>
 </html>

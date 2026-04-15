@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AcadNet - Bitácora del Sistema</title>
+    <style>
+        :root {
+            --ink-black: #001219;
+            --dark-teal: #005F73;
+            --dark-cyan: #0A9396;
+            --pearl-aqua: #94D2BD;
+            --vanilla-custard: #E9D8A6;
+        }
+
+        body { 
+            font-family: 'Courier New', Courier, monospace; /* Fuente de consola */
+            margin: 40px; 
+            background-color: var(--vanilla-custard); 
+            color: var(--ink-black); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contenedor-log { 
+            border: 2px solid var(--dark-teal); 
+            border-radius: 8px; 
+            background: var(--ink-black); /* Fondo oscuro de consola */
+            width: 100%;
+            max-width: 800px; 
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 18, 25, 0.2);
+        }
+
+        h2 {
+            color: var(--dark-teal);
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .consola { 
+            height: 450px; 
+            overflow-y: auto; /* Agrega scroll si hay muchos registros */
+            padding-right: 15px;
+        }
+
+        /* Estilo para la lista de registros */
+        ul {
+            list-style-type: none; /* Quitamos las viñetas por defecto */
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            color: var(--pearl-aqua); /* Texto brillante */
+            padding: 8px 0;
+            border-bottom: 1px dashed #333; /* Línea divisoria muy sutil */
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        /* Quitamos la línea divisoria al último elemento */
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-volver { 
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px; 
+            background-color: var(--dark-teal); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--dark-cyan);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilo del scrollbar para que se vea moderno */
+        .consola::-webkit-scrollbar { width: 8px; }
+        .consola::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
+        .consola::-webkit-scrollbar-thumb { background: var(--dark-cyan); border-radius: 4px; }
+
+    </style>
+</head>
+<body>
+
+    <h2>Historial de Actividad (Bitácora)</h2>
+
+    <div class="contenedor-log">
+        <div class="consola">
+            <ul>
+                {% for linea in historial %}
+                    <li> {{ linea }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a href="{% url 'panel_admin' %}" class="btn-volver">← Regresar al Panel</a>
+
+</body>
+</html>

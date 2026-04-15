@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Usuario</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f7f6;}
+        .contenedor { border: 1px solid #ccc; padding: 30px; border-radius: 8px; max-width: 500px; background: white;}
+        input, select { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 95%;}
+      .btn-volver { 
+            display: inline-block; 
+            margin-top: 15px; 
+            padding: 10px 15px; 
+            background-color: var(--ink-black); 
+            color: var(--vanilla-custard); 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .btn-volver:hover {
+            background-color: var(--dark-cyan);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>Crear Nuevo Usuario</h2>
+        
+        {% if mensaje %}
+            <p class="mensaje">{{ mensaje }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label>Nombre de Usuario o Carnet:</label>
+            <input type="text" name="nuevo_usuario" required>
+            
+            <label>Contraseña:</label>
+            <input type="text" name="nueva_contra" required>
+            
+            <label>Rol en el sistema:</label>
+            <select name="nuevo_rol" required>
+                <option value="estudiante">Estudiante</option>
+                <option value="tutor">Tutor / Profesor</option>
+                <option value="admin">Administrador</option>
+            </select>
+            
+            <label>Nombre Completo:</label>
+            <input type="text" name="nombre_completo" placeholder="Ej. Ana García" required>
+
+            <br><br>
+            <button type="submit">Guardar Usuario</button>
+            <br><br>
+            {% if request.session.rol == 'admin' %}
+                <a href="{% url 'panel_admin' %}" class="btn-volver">← Volver al Panel</a>
+            {% elif request.session.rol == 'tutor' %}
+                <a href="{% url 'panel_tutor' %}" class="btn-volver">← Volver al Panel</a>
+            {% else %}
+                <a href="{% url 'panel_estudiante' %}" class="btn-volver">← Volver al Panel</a>
+            {% endif %}
+        </form>
+        
+        <a href="{% url 'panel_admin' %}" class="btn-volver">Regresar al Panel</a>
+    </div>
+
+</body>
+</html>

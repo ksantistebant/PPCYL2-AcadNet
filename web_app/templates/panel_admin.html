@@ -4,17 +4,78 @@
     <meta charset="UTF-8">
     <title>Panel de Administrador</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f7f6;}
-        .contenedor { border: 1px solid #ccc; padding: 30px; border-radius: 8px; max-width: 600px; background: white;}
-        .btn-salir { padding: 10px 15px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;}
+        /* 1. Declaramos la paleta de colores aquí arriba */
+        :root {
+            --ink-black: #001219;
+            --dark-teal: #005F73;
+            --dark-cyan: #0A9396;
+            --pearl-aqua: #94D2BD;
+            --vanilla-custard: #E9D8A6;
+        }
+
+        /* 2. Empezamos a pintar la página usando 'var(--nombre-del-color)' */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-color: var(--vanilla-custard); /* Fondo suave */
+            color: var(--ink-black); /* Texto oscuro y elegante */
+        }
+
+        .contenedor { 
+            border: none; 
+            padding: 30px; 
+            border-radius: 8px; 
+            max-width: 800px; 
+            background: white;
+            box-shadow: 0 8px 16px rgba(0, 18, 25, 0.1); /* Sombra con el tono Ink Black */
+        }
+
+        /* Estilo para los enlaces del menú */
+        ul { list-style-type: none; padding: 0; }
+    
+        li a {
+            display: block;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: var(--dark-cyan); /* Color base del botón */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.3s; /* Animación suave */
+        }
+
+        /* Efecto al pasar el mouse por los enlaces */
+        li a:hover {
+            background-color: var(--dark-teal); 
+        }
+
+        /* Botón de cerrar sesión un poco distinto para resaltarlo */
+        .btn-salir { 
+            display: block;
+            padding: 10px 15px; 
+            background-color: var(--ink-black); 
+            color: var(--pearl-aqua); 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <div class="contenedor">
         <h2>Bienvenido, Administrador</h2>
-        <p>Has ingresado al sistema de control principal de AcadNet. Por favor escoge una de las siguientes oppciones:</p>
-        
+        <p>Has ingresado al sistema de control principal de AcadNet. Por favor escoge una de las siguientes opciones:</p>
+        <ul>
+            <li><a href="{% url 'subir_notas'%}">Subir Notas</a></li>
+            <li><a href="{% url 'mis_notas'%}">Mis Notas</a></li>
+            <li><a href="{% url 'reporte_tutor'%}">Reporte Tutor</a></li>
+            <li><a href="{% url 'agregar_usuario'%}">Agregar Usuario</a></li>
+            <li><a href="{% url 'ver_bitacora'%}">Bitacora</a></li>
+        </ul>
         <br><br>
         <a href="{% url 'logout' %}" class="btn-salir">Cerrar Sesión</a>
     </div>

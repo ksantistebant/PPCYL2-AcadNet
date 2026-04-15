@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal AcadNet - Estudiante</title>
+    <style>
+        :root {
+            --ink-black: #001219;
+            --dark-teal: #005F73;
+            --dark-cyan: #0A9396;
+            --pearl-aqua: #94D2BD;
+            --vanilla-custard: #E9D8A6;
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px;
+            background-color: var(--vanilla-custard);
+            color: var(--ink-black);
+            display: flex;
+            justify-content: center;
+        }
+        .card-perfil {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,18,25,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        .avatar-circulo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--pearl-aqua);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--dark-teal);
+            font-weight: bold;
+        }
+        h2 { color: var(--dark-teal); margin-bottom: 5px; }
+        .carnet-tag {
+            display: inline-block;
+            background-color: var(--ink-black);
+            color: var(--pearl-aqua);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+        .menu-opciones a {
+            display: block;
+            padding: 15px;
+            margin-bottom: 12px;
+            background-color: var(--dark-cyan);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .menu-opciones a:hover {
+            background-color: var(--dark-teal);
+            transform: translateY(-2px);
+        }
+        .btn-logout {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--dark-teal);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-perfil">
+        <div class="avatar-circulo">
+            {{ nombre|slice:":1" }}
+        </div>
+        <h2>{{ nombre }}</h2>
+        <div class="carnet-tag">Carnet: {{ carnet }}</div>
+        
+        <div class="menu-opciones">
+            <a href="{% url 'mis_notas' %}">Consultar Mis Notas</a>
+            <a href="#">Ver Plan de Estudios</a>
+        </div>
+
+        <a href="{% url 'logout' %}" class="btn-logout">Cerrar Sesión</a>
+    </div>
+</body>
+</html>

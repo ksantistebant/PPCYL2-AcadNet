@@ -24,6 +24,16 @@
         {% if mensaje %}
             <p class="alerta">{{ mensaje }}</p>
         {% endif %}
+
+         <br><br>
+            {% if request.session.rol == 'admin' %}
+                <a href="{% url 'panel_admin' %}" class="btn-volver">← Volver al Panel</a>
+            {% elif request.session.rol == 'tutor' %}
+                <a href="{% url 'panel_tutor' %}" class="btn-volver">← Volver al Panel</a>
+            {% else %}
+                <a href="{% url 'panel_estudiante' %}" class="btn-volver">← Volver al Panel</a>
+            {% endif %}
+
     </div>
 </body>
 </html>

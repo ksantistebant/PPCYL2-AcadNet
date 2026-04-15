@@ -23,9 +23,11 @@ urlpatterns = [
 
     path('',views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-
+    path('panel-tutor/', views.panel_tutor, name='panel_tutor'),
+    path('panel-estudiante/', views.panel_estudiante, name='panel_estudiante'),
     path('panel-admin/', views.panel_admin, name='panel_admin'),
-
+    path('bitacora/', views.ver_bitacora, name='ver_bitacora'),
+    path('agregar_usuario/', views.agregar_usuario, name='agregar_usuario'),
     path('subir-notas/', views.subir_notas, name='subir_notas'),
     path('mis-notas/', views.mis_notas, name='mis_notas'),
     path('reporte-tutor/', views.reporte_tutor, name='reporte_tutor'),

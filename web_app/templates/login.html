@@ -4,43 +4,96 @@
     <meta charset="UTF-8">
     <title>AcadNet - Iniciar Sesión</title>
     <style>
+        /* 1. Tu paleta de colores */
+        :root {
+            --ink-black: #001219;
+            --dark-teal: #005F73;
+            --dark-cyan: #0A9396;
+            --pearl-aqua: #94D2BD;
+            --vanilla-custard: #E9D8A6;
+        }
+
+        /* 2. Centramos todo en medio de la pantalla */
         body { 
-            font-family: Arial, sans-serif; 
-            background-color: #f4f7f6; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--vanilla-custard); 
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            height: 100vh; 
+            height: 100vh; /* Ocupa toda la altura de la ventana */
             margin: 0; 
+            color: var(--ink-black);
         }
+
+        /* 3. La tarjeta blanca principal */
         .login-box { 
             background: white; 
             padding: 40px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0, 18, 25, 0.15); 
             width: 100%; 
             max-width: 350px; 
             text-align: center;
         }
+
+        .login-box h2 {
+            color: var(--dark-teal);
+            margin-bottom: 5px;
+        }
+
+        .login-box p {
+            margin-bottom: 25px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* 4. Estilo de las cajas de texto */
         input { 
             width: 90%; 
-            padding: 10px; 
-            margin: 10px 0; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
+            padding: 12px; 
+            margin-bottom: 15px; /* Separación hacia abajo */
+            border: 2px solid #eee; 
+            border-radius: 6px; 
+            font-size: 1em;
+            transition: 0.3s;
         }
+
+        /* Efecto cuando haces clic en la caja de texto */
+        input:focus {
+            outline: none;
+            border-color: var(--dark-cyan);
+        }
+
+        /* 5. El botón principal */
         button { 
             width: 100%; 
-            padding: 10px; 
-            background-color: #007bff; 
+            padding: 12px; 
+            background-color: var(--dark-teal); 
             color: white; 
             border: none; 
-            border-radius: 5px; 
+            border-radius: 6px; 
             cursor: pointer; 
             font-weight: bold;
+            font-size: 1.05em;
+            transition: 0.3s;
         }
-        button:hover { background-color: #0056b3; }
-        .alerta { color: red; font-size: 0.9em; margin-bottom: 15px; }
+
+        /* Efecto al pasar el mouse por el botón */
+        button:hover { 
+            background-color: var(--ink-black); 
+            transform: translateY(-2px);
+        }
+
+        /* Alerta de error */
+        .alerta { 
+            color: #dc3545; 
+            font-weight: bold;
+            font-size: 0.9em; 
+            margin-bottom: 15px; 
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +110,8 @@
             {% csrf_token %}
             <input type="text" name="usuario" placeholder="Usuario o Carnet" required>
             <input type="password" name="contrasena" placeholder="Contraseña" required>
-            <button type="submit">Entrar</button>
+            
+            <button type="submit">Entrar al Sistema</button>
         </form>
     </div>
 

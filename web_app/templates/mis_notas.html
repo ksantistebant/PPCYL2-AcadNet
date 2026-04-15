@@ -45,6 +45,14 @@
                 </tbody>
             </table>
         {% endif %}
+        <br><br>
+        {% if request.session.rol == 'admin' %}
+            <a href="{% url 'panel_admin' %}" class="btn-volver">← Regresar al Panel</a>
+        {% elif request.session.rol == 'tutor' %}
+            <a href="{% url 'panel_tutor' %}" class="btn-volver">← Regresar al Panel</a>
+        {% else %}
+            <a href="{% url 'panel_estudiante' %}" class="btn-volver">← Regresar al Panel</a>
+        {% endif %}
     </div>
 </body>
 </html>
