@@ -62,3 +62,61 @@ El sistema se divide en dos servicios principales que interactúan mediante peti
 👤 Autor
 
 Kat - Desarrollo Integral Backend & Frontend
+
+```mermaid
+classDiagram
+    class Usuario {
+        -String carnet
+        -String contrasena
+        -String rol
+        -String nombre
+        +login() bool
+    }
+
+    class Administrador {
+        +crear_usuario() void
+        +ver_bitacora() void
+    }
+
+    class Tutor {
+        +cargar_notas(archivoXML) void
+        +generar_reporte() void
+    }
+
+    class Estudiante {
+        +ver_notas() void
+    }
+
+    Usuario <|-- Administrador : Hereda
+    Usuario <|-- Tutor : Hereda
+    Usuario <|-- Estudiante : Hereda
+
+    class MatrizDispersa {
+        -Nodo inicio
+        +insertar_nota(n: Nota) void
+        +buscar_nota(carnet, curso) Nota
+        +cargar_desde_xml(archivo) void
+    }
+
+    class Nota {
+        -String carnet
+        -String curso
+        -int calificacion
+    }
+
+    MatrizDispersa *-- Nota : Contiene (Composición)
+    Tutor ..> MatrizDispersa : Usa (API Flask)
+    Estudiante ..> MatrizDispersa : Consulta (API Flask)
+
+    class UserManager {
+        +guardar_usuario(u: Usuario) void
+        +cargar_usuarios() List
+    }
+    
+    class Bitacora {
+        +registrar_movimiento(user, accion) void
+        +leer_bitacora() List
+    }
+
+    Administrador ..> UserManager : Gestiona (JSON)
+    Usuario ..> Bitacora : Registra Eventos (TXT)
